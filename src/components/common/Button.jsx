@@ -10,10 +10,14 @@ const ButtonStyled = styled.input`
   background-color: #0095f6;
   color: #ffff;
   border-radius: 4px;
+  cursor: pointer;
+  :disabled {
+    background-color: #bde5ff;
+  }
 `;
 
 function Button({ ...rest }) {
   return <ButtonStyled {...rest} />;
 }
 
-export default React.memo(Button);
+export default Button;

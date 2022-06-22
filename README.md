@@ -91,3 +91,6 @@ npm start
 ## 참고 이미지
 
 [참고 이미지 링크](https://bclef25.notion.site/1ed6d5b2192b45eeb4104a67f6a77250)
+
+고민했던 부분
+랜더링 부분

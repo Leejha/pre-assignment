@@ -1,20 +1,46 @@
 import React from 'react';
 import styled from 'styled-components';
+import useLogin from '../../hooks/useLogin';
+import useValidation from '../../hooks/useValidation';
 import { FlexAlignCenter } from '../../libs/styles/utilStyles';
 import Button from '../common/Button';
 import Input from '../common/Input';
 
 function LoginContainer() {
+  const { idRef, passwordRef, onLogin } = useLogin();
+  const { onCheckId, onCheckPassword, isValidated } = useValidation();
+
   return (
-    <Form>
+    <Form onSubmit={onLogin}>
       <Logo
         src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
         alt="Instagram"
       />
       <LoginBox>
-        <Input type="text" placeholder="전화번호, 사용자 이름 또는 이메일" />
-        <Input type="password" placeholder="비밀번호" />
-        <Button type="submit" value="로그인" />
+        <Input
+          type="text"
+          placeholder="전화번호, 사용자 이름 또는 이메일"
+          ref={idRef}
+          onChange={onCheckId}
+          validated={isValidated.id}
+        />
+        <Input
+          type="password"
+          placeholder="비밀번호"
+          ref={passwordRef}
+          onChange={onCheckPassword}
+          validated={isValidated.password}
+        />
+        <Button
+          type="submit"
+          value="로그인"
+          disabled={
+            !isValidated.id ||
+            !isValidated.password ||
+            !idRef?.current?.value.length ||
+            !passwordRef?.current?.value.length
+          }
+        />
       </LoginBox>
     </Form>
   );
