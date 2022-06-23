@@ -6,7 +6,7 @@ function useValidation() {
     password: true,
   });
 
-  const ionCheckId = (e) => {
+  const onCheckId = (e) => {
     const value = e.target.value;
     const idRegex =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -29,7 +29,7 @@ function useValidation() {
     setIsValidated({ ...isValidated, password: true });
     return;
   };
-  return { ionCheckId, onCheckPassword, isValidated };
+  return { onCheckId, onCheckPassword, isValidated };
 }
 
 export default useValidation;

@@ -6,11 +6,12 @@ function useLogin() {
   const idRef = useRef(null);
   const passwordRef = useRef(null);
   const id = idRef?.current?.value;
-  const nvaigate = useNavigate();
+  const navigate = useNavigate();
 
-  const onLogin = (e) => {
+  const onLogin = useCallback(() => {
     userStorage.set(id);
-  };
+    navigate('/feed');
+  }, [id]);
 
   return {
     idRef,

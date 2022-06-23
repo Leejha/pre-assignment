@@ -13,7 +13,6 @@ const userStorage = {
     }
   },
   set(user) {
-    console.log('userStorage.set', user);
     localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
   },
   remove() {

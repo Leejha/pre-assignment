@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { FlexCenter } from '../../libs/styles/utilStyles';
 import media from '../../libs/styles/media';
@@ -10,13 +10,13 @@ import userStorage from '../../libs/utils/userStorage';
 
 function GNB() {
   const [user, setUser] = useState({ id: '' });
-  // const nvaigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userParser = userStorage.get();
-    setUser(userParser);
-    // userParser ? nvaigate('/feed') : nvaigate('/');
-  }, [user]);
+    console.log(userParser);
+    !userParser && navigate('/');
+  }, []);
 
   return (
     <>
